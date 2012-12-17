@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 
 public class Calculator {
 
@@ -7,30 +9,41 @@ public class Calculator {
 			return;
 		}
 
+		Stack<Integer> stack = new Stack<>();
 		for (String token : args[0].split(" ")) {
 			try {
-				//    - if it's a number, push it on the stack
-				int number = Integer.parseInt(token);
-				System.out.println(number + " is a number");
+				// if the token is a number, push it on the stack
+				stack.push(Integer.parseInt(token));
 			} catch (NumberFormatException e) {
-				//    - if it's an operator:
-				//        pop two operands off the stack
-				//        do the operation
-				//        push the result back on the stack
+				// if the token is an operator, pop two operands and push the result
 				switch (token) {
-				case "+":
-				case "-":
-				case "*":
-				case "/":
-					System.out.println(token + " is an operator");
+				case "+": {
+					int rhs = stack.pop(), lhs = stack.pop();
+					stack.push(lhs + rhs);
 					break;
+				}
+				case "-": {
+					int rhs = stack.pop(), lhs = stack.pop();
+					stack.push(lhs - rhs);
+					break;
+				}
+				case "*": {
+					int rhs = stack.pop(), lhs = stack.pop();
+					stack.push(lhs * rhs);
+					break;
+				}
+				case "/": {
+					int rhs = stack.pop(), lhs = stack.pop();
+					stack.push(lhs / rhs);
+					break;
+				}
 				default:
 					System.out.println(token + " is garbage");
 				}
 			}
 		}
 
-		// 4. print out whatever is left on the stack
+		System.out.println(stack.pop());
 	}
 
 }
