@@ -7,11 +7,8 @@ public class LaptopTest {
 	@Test
 	public void test() {
 		Laptop l1 = new Laptop();
-		l1.size = 15;
-		
-		Laptop l2 = new Laptop();
-		l2.size = 17;
-		
+		l1.size = 17;
+
 		// initialize some memory
 		Memory[] memory = { new Memory(), new Memory() };
 		memory[0].capacity = 2048;
@@ -33,7 +30,7 @@ public class LaptopTest {
 		LaptopBag bag = new LaptopBag();
 		bag.color = "Black";
 		bag.size = 15;
-		bag.contents = l1;
+		bag.laptop = l1;
 
 		System.out.println(bag);
 	}
