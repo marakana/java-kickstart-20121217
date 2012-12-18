@@ -50,30 +50,28 @@ public class Calculator {
 	 * @return whether the token was an operator or not
 	 */
 	public static boolean handleOperator(String token, Stack<Integer> stack) {
+		
+		Operator op;
 		switch (token) {
-		case "+": {
-			int rhs = stack.pop(), lhs = stack.pop();
-			stack.push(lhs + rhs);
-			return true;
-		}
-		case "-": {
-			int rhs = stack.pop(), lhs = stack.pop();
-			stack.push(lhs - rhs);
-			return true;
-		}
-		case "*": {
-			int rhs = stack.pop(), lhs = stack.pop();
-			stack.push(lhs * rhs);
-			return true;
-		}
-		case "/": {
-			int rhs = stack.pop(), lhs = stack.pop();
-			stack.push(lhs / rhs);
-			return true;
-		}
+		case "+":
+			op = Operator.ADD;
+			break;
+		case "-":
+			op = Operator.SUBTRACT;
+			break;
+		case "*":
+			op = Operator.MULTIPLY;
+			break;
+		case "/":
+			op = Operator.DIVIDE;
+			break;
 		default:
 			return false;
 		}
+
+		int rhs = stack.pop(), lhs = stack.pop();
+		stack.push(op.operate(lhs, rhs));
+		return true;
 	}
 
 }
