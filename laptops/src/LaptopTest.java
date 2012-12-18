@@ -14,7 +14,7 @@ public class LaptopTest {
 		l1.setApplications(applications);
 
 		// initialize bag
-		LaptopBag bag = new LaptopBag("black", 15);
+		LaptopBag bag = new LaptopBag(Color.BLACK, 15);
 		bag.setLaptop(l1);
 
 		System.out.println(bag);

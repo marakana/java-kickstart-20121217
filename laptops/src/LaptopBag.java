@@ -1,14 +1,14 @@
 public class LaptopBag {
-	private final String color;
+	private final Color color;
 	private final int size;
 	private Laptop laptop;
 
-	public LaptopBag(String color, int size) {
+	public LaptopBag(Color color, int size) {
 		this.color = color;
 		this.size = size;
 	}
 
-	public String getColor() {
+	public Color getColor() {
 		return color;
 	}
 
