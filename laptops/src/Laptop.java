@@ -22,7 +22,11 @@ public class Laptop {
 	}
 
 	public int getTotalStorageCapacity() {
-		// TODO
+		int capacity = 0;
+		for (Storage s : storage) {
+			capacity += s.getCapacity();
+		}
+		return capacity;
 	}
 
 	public String[] getApplications() {

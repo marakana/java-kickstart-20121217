@@ -1,21 +1,7 @@
-public class Memory implements Storage {
-	private final String type;
-	private final int capacity;
+public class Memory extends Storage {
 
 	public Memory(String type, int capacity) {
-		if (capacity <= 0)
-			throw new IllegalArgumentException();
-
-		this.type = type;
-		this.capacity = capacity;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public int getCapacity() {
-		return capacity;
+		super(type, capacity);
 	}
 
 	@Override
