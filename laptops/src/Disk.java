@@ -1,4 +1,4 @@
-public class Disk {
+public class Disk implements Storage {
 	private final String type;
 	private final int capacity;
 
@@ -17,7 +17,6 @@ public class Disk {
 	public int getCapacity() {
 		return capacity;
 	}
-
 
 	@Override
 	public String toString() {

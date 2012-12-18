@@ -1,4 +1,4 @@
-public class Memory {
+public class Memory implements Storage {
 	private final String type;
 	private final int capacity;
 

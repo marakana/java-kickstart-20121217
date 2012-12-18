@@ -6,9 +6,8 @@ public class LaptopTest {
 
 	@Test
 	public void test() {
-		Memory[] memory = { new Memory("SDRAM", 2048), new Memory("SDRAM", 2048) };
-		Disk disk = new Disk("SATA", 512);
-		Laptop l1 = new Laptop(17, memory, disk);
+		Storage[] storage = { new Memory("SDRAM", 2048), new Memory("SDRAM", 2048), new Disk("SATA", 512000) };
+		Laptop l1 = new Laptop(17, storage);
 
 		// install applications
 		String[] applications = { "BitTorrent", "Chrome" };

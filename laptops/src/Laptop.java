@@ -2,29 +2,27 @@ import java.util.Arrays;
 
 public class Laptop {
 	private final int size;
-	private final Memory[] memory;
-	private final Disk disk;
+	private final Storage[] storage;
 	private String[] applications;
 
-	public Laptop(int size, Memory[] memory, Disk disk) {
+	public Laptop(int size, Storage[] storage) {
 		if (size <= 0)
 			throw new IllegalArgumentException();
 
 		this.size = size;
-		this.memory = memory;
-		this.disk = disk;
+		this.storage = storage;
 	}
 
 	public int getSize() {
 		return size;
 	}
 
-	public Memory[] getMemory() {
-		return memory;
+	public Storage[] getStorage() {
+		return storage;
 	}
 
-	public Disk getDisk() {
-		return disk;
+	public int getTotalStorageCapacity() {
+		// TODO
 	}
 
 	public String[] getApplications() {
@@ -37,8 +35,8 @@ public class Laptop {
 
 	@Override
 	public String toString() {
-		return "Laptop [size=" + size + ", memory=" + Arrays.toString(memory)
-				+ ", disk=" + disk + ", applications="
-				+ Arrays.toString(applications) + "]";
+		return "Laptop [size=" + size + ", storage=" + Arrays.toString(storage)
+				+ ", applications=" + Arrays.toString(applications) + "]";
 	}
+
 }
