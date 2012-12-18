@@ -6,31 +6,17 @@ public class LaptopTest {
 
 	@Test
 	public void test() {
-		Laptop l1 = new Laptop();
-		l1.size = 17;
+		Memory[] memory = { new Memory("SDRAM", 2048), new Memory("SDRAM", 2048) };
+		Disk disk = new Disk("SATA", 512);
+		Laptop l1 = new Laptop(17, memory, disk);
 
-		// initialize some memory
-		Memory[] memory = { new Memory(), new Memory() };
-		memory[0].capacity = 2048;
-		memory[0].type = "SDRAM";
-		memory[1].capacity = 2048;
-		memory[1].type = "SDRAM";
-		l1.memory = memory;
-
-		// initialize a disk
-		l1.disk = new Disk();
-		l1.disk.capacity = 512;
-		l1.disk.type = "SATA";
-
-		// initialize applications
+		// install applications
 		String[] applications = { "BitTorrent", "Chrome" };
-		l1.applications = applications;
+		l1.setApplications(applications);
 
 		// initialize bag
-		LaptopBag bag = new LaptopBag();
-		bag.color = "Black";
-		bag.size = 15;
-		bag.laptop = l1;
+		LaptopBag bag = new LaptopBag("black", 15);
+		bag.setLaptop(l1);
 
 		System.out.println(bag);
 	}
