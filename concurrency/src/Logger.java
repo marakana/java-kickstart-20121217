@@ -9,13 +9,15 @@ public class Logger implements Callable<Void> {
 
 	@Override
 	public Void call() throws Exception {
-		// entry point for logger thread:
-		//   - loop forever
-		//   - pop messages off the queue and print them when they are available
-		return null;
+		while (true) {
+			if (!messages.isEmpty()) {
+				System.out.println(messages.remove());
+			}
+			Thread.yield();
+		}
 	}
 
 	public void log(String message) {
-		// - insert a message in the queue
+		messages.add(message);
 	}
 }

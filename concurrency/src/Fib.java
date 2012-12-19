@@ -20,11 +20,14 @@ public class Fib {
 	public static void main(String[] args) {
 		ExecutorService svc = Executors.newFixedThreadPool(10);
 		
+		final Logger logger = new Logger();
+		svc.submit(logger);
+		
 		List<Callable<Void>> tasks = new ArrayList<>();
 		for (int i = 0; i < 20; i++) {
 			tasks.add(new Callable<Void>() {
 				public Void call() throws Exception {
-					System.out.println(Thread.currentThread().getName() + ": " + randomFib());
+					logger.log(Thread.currentThread().getName() + ": " + randomFib());
 					return null;
 				}
 			});
