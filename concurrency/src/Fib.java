@@ -2,6 +2,11 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Fib {
 	public static BigInteger fib(int n) {
@@ -13,24 +18,26 @@ public class Fib {
 	}
 
 	public static void main(String[] args) {
-		List<Thread> threads = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
-			Thread t = new Thread() {
-				public void run() {
-					System.out.println(this.getName() + ": " + randomFib());
+		ExecutorService svc = Executors.newFixedThreadPool(10);
+		
+		List<Callable<Void>> tasks = new ArrayList<>();
+		for (int i = 0; i < 20; i++) {
+			tasks.add(new Callable<Void>() {
+				public Void call() throws Exception {
+					System.out.println(Thread.currentThread().getName() + ": " + randomFib());
+					return null;
 				}
-			};
-			t.start();
-			threads.add(t);
+			});
 		}
 
-		for (Thread t : threads) {
-			try {
-				t.join();
-			} catch (InterruptedException e) {
+		try {
+			for (Future<Void> future : svc.invokeAll(tasks)) {
+				future.get();
 			}
+		} catch (InterruptedException e) {
+		} catch (ExecutionException e) {
 		}
 
-		System.out.println("done");
+		svc.shutdown();
 	}
 }
