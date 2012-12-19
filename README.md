@@ -23,18 +23,18 @@ Collections
 
 Important ones:
 
-  * Collection<E>
-    * List<E>
-      * ArrayList<E>
-      * LinkedList<E>
-    * Set<E>
-      * HashSet<E>
-      * SortedSet<E>
-        * TreeSet<E>
-  * Map<K, V>
-    * HashMap<K, V>
-    * SortedMap<K, V>
-      * TreeMap<K, V>
+  * `Collection<E>`
+    * `List<E>`
+      * `ArrayList<E>`
+      * `LinkedList<E>`
+    * `Set<E>`
+      * `HashSet<E>`
+      * `SortedSet<E>`
+        * `TreeSet<E>`
+  * `Map<K, V>`
+    * `HashMap<K, V>`
+    * `SortedMap<K, V>`
+      * `TreeMap<K, V>`
 
 Videos
 ------
