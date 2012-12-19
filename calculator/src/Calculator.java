@@ -1,6 +1,17 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class Calculator {
+
+	private static final Map<String, Operator> ops;
+	static {
+		ops = new HashMap<>();
+		ops.put("+", Operator.ADD);
+		ops.put("-", Operator.SUBTRACT);
+		ops.put("*", Operator.MULTIPLY);
+		ops.put("/", Operator.DIVIDE);
+	}
 
 	public static void main(String[] args) {
 		if (args.length != 1) {
@@ -50,24 +61,9 @@ public class Calculator {
 	 * @return whether the token was an operator or not
 	 */
 	public static boolean handleOperator(String token, Stack<Integer> stack) {
-		
-		Operator op;
-		switch (token) {
-		case "+":
-			op = Operator.ADD;
-			break;
-		case "-":
-			op = Operator.SUBTRACT;
-			break;
-		case "*":
-			op = Operator.MULTIPLY;
-			break;
-		case "/":
-			op = Operator.DIVIDE;
-			break;
-		default:
+		Operator op = ops.get(token);
+		if (op == null)
 			return false;
-		}
 
 		int rhs = stack.pop(), lhs = stack.pop();
 		stack.push(op.operate(lhs, rhs));
