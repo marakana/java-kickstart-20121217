@@ -11,12 +11,26 @@ public class Laptop {
 	private final List<Storage> storage;
 	private final Set<String> applications = new HashSet<>();
 
-	public Laptop(int size, List<Storage> storage) {
+	private static int count = 0;
+
+	private Laptop(int size, List<Storage> storage) {
 		if (size <= 0)
 			throw new IllegalArgumentException();
 
 		this.size = size;
 		this.storage = new ArrayList<>(storage);
+	}
+
+	/**
+	 * makeLaptop is an example of the "factory" pattern
+	 * @param size
+	 * @param storage
+	 * @return
+	 */
+	public static Laptop makeLaptop(int size, List<Storage> storage) {
+		if (count++ > 100)
+			return null;
+		return new Laptop(size, storage);
 	}
 
 	public int getSize() {

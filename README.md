@@ -36,6 +36,25 @@ Important ones:
     * `SortedMap<K, V>`
       * `TreeMap<K, V>`
 
+Concurrency
+-----------
+
+Benefits:
+
+  * parallelism (multithreading): ability to do multiple things at the same time
+  * performance: things don't have to wait for each other
+  * resource utilization: take advantage of multi-core / multi-processor hardware
+
+Problems:
+
+  * race conditions: two threads are trying to modify shared memory or shared resources simultaneously
+  * deadlocks: two or more threads with a lock graph cycle
+  * thread starvation: one thread acquires a lock and holds it forever, or thread scheduler is never allowed to context switch
+
+Solutions:
+
+  * monitors (locks / mutexes / critical sections), synchronized methods or blocks
+
 Videos
 ------
 

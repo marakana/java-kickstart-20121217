@@ -12,7 +12,8 @@ public class LaptopTest {
 		storage.add(new Memory("SDRAM", 2048));
 		storage.add(new Disk("SATA", 512000));
 
-		Laptop lappy = new Laptop(15, storage);
+		// use factory method to make a laptop
+		Laptop lappy = Laptop.makeLaptop(15, storage);
 
 		// install applications
 		lappy.addApplications("BitTorrent", "Chrome");
