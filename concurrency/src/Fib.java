@@ -1,4 +1,6 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Fib {
@@ -11,6 +13,7 @@ public class Fib {
 	}
 
 	public static void main(String[] args) {
+		List<Thread> threads = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			Thread t = new Thread() {
 				public void run() {
@@ -18,10 +21,16 @@ public class Fib {
 				}
 			};
 			t.start();
+			threads.add(t);
 		}
 
-		// TODO: only print done when the threads are all finished running.
-		//   - hint: Thread.join();
+		for (Thread t : threads) {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+			}
+		}
+
 		System.out.println("done");
 	}
 }
