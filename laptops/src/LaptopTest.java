@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -17,10 +15,7 @@ public class LaptopTest {
 		Laptop lappy = new Laptop(15, storage);
 
 		// install applications
-		Set<String> applications = new HashSet<>();
-		applications.add("BitTorrent");
-		applications.add("Chrome");
-		lappy.setApplications(applications);
+		lappy.addApplications("BitTorrent", "Chrome");
 
 		// initialize bag
 		LaptopBag baggy = new LaptopBag(Color.BLACK, 15);

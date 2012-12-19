@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Laptop {
 	private final int size;
 	private final List<Storage> storage;
-	private Set<String> applications;
+	private final Set<String> applications = new HashSet<>();
 
 	public Laptop(int size, List<Storage> storage) {
 		if (size <= 0)
@@ -33,11 +36,31 @@ public class Laptop {
 	}
 
 	public Set<String> getApplications() {
-		return applications;
+		return Collections.unmodifiableSet(applications);
 	}
 
-	public void setApplications(Set<String> applications) {
-		this.applications = applications;
+	public void addApplication(String app) {
+		applications.add(app);
+	}
+
+	public void addApplications(Collection<String> apps) {
+		applications.addAll(apps);
+	}
+
+	public void addApplications(String... apps) {
+		addApplications(Arrays.asList(apps));
+	}
+
+	public void removeApplication(String app) {
+		applications.remove(app);
+	}
+
+	public void removeApplications(Collection<String> apps) {
+		applications.removeAll(apps);
+	}
+
+	public void removeApplications(String... apps) {
+		removeApplications(Arrays.asList(apps));
 	}
 
 	@Override
