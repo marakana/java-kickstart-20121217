@@ -1,22 +1,27 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-
 public class Logger implements Runnable {
 
 	private final Queue<String> messages = new LinkedList<>();
 
 	@Override
 	public void run() {
-		while (true) {
-			if (!messages.isEmpty()) {
-				System.out.println(messages.remove());
+		try {
+			while (true) {
+				synchronized (this) {
+					wait();
+					while (!messages.isEmpty()) {
+						System.out.println(messages.remove());
+					}
+				}
 			}
-			Thread.yield();
+		} catch (InterruptedException e) {
 		}
 	}
 
-	public void log(String message) {
+	public synchronized void log(String message) {
 		messages.add(message);
+		notify();
 	}
 }
