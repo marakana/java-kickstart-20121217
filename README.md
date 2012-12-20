@@ -54,6 +54,8 @@ Problems:
 Solutions:
 
   * monitors (locks / mutexes / critical sections), synchronized methods or blocks
+  * semaphores (wait + notify)
+  * ... better solutions
 
 Videos
 ------
@@ -70,3 +72,17 @@ Day 2
   * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/2.2.mov
   * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/2.3.mov
   * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/2.4.mov
+
+Day 3
+
+  * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/3.1.mov
+  * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/3.2.mov
+  * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/3.3.mov
+  * https://mrkn.s3.amazonaws.com/recordings/java-kickstart-20121217/3.4.mov
+
+Resources
+---------
+
+  * "Effective Java"
+  * "Java Concurrency in Practice"
+  * "Design Patterns"

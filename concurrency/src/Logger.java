@@ -1,27 +1,24 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Logger implements Runnable {
 
-	private final Queue<String> messages = new LinkedList<>();
+	private final BlockingQueue<String> messages = new LinkedBlockingQueue<>();
 
 	@Override
 	public void run() {
 		try {
 			while (true) {
-				synchronized (this) {
-					wait();
-					while (!messages.isEmpty()) {
-						System.out.println(messages.remove());
-					}
-				}
+				System.out.println(messages.take());
 			}
 		} catch (InterruptedException e) {
 		}
 	}
 
-	public synchronized void log(String message) {
-		messages.add(message);
-		notify();
+	public void log(String message) {
+		try {
+			messages.put(message);
+		} catch (InterruptedException e) {
+		}
 	}
 }
