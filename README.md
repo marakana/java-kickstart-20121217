@@ -53,9 +53,9 @@ Problems:
 
 Solutions:
 
-  * monitors (locks / mutexes / critical sections), synchronized methods or blocks
-  * semaphores (wait + notify)
-  * ... better solutions
+  * monitors (locks / mutexes / critical sections), `synchronized` methods or blocks
+  * semaphores (`wait` + `notify`)
+  * ... better solutions: `BlockingQueue` and other utilities in `java.util.concurrent`
 
 Videos
 ------
